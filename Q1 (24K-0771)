@@ -1,0 +1,46 @@
+let employees = [];
+
+let addEmployee = (name, sal, score) => {
+    employees.push({
+        name: name,
+        baseSalary: sal,
+        performanceScore: score,
+        bonus: 0,
+        totalSalary: sal
+    });
+}
+
+let updatePerformance = (i, score) => {
+    employees[i].performanceScore = score;
+}
+
+let calculateBonus = i => {
+    let employee = employees[i];
+    if (employee.performanceScore >= 90) {
+        employee.bonus = employee.baseSalary * 0.2;
+    } else if (employee.performanceScore >= 70) {
+        employee.bonus = employee.baseSalary * 0.1;
+    } else {
+        employee.bonus = 0;
+    }
+}
+
+let calculateTotalSalary = i => {
+    let employee = employees[i];
+    employee.totalSalary = employee.baseSalary + employee.bonus;
+}
+
+let showEmployees = () => {
+    for (let i = 0; i < employees.length; i++) {
+        console.log(employees[i]);
+    }
+}
+
+addEmployee("Zaiyan", 50000, 85);
+addEmployee("Umer", 60000, 95);
+updatePerformance(0, 88);
+calculateBonus(0);
+calculateTotalSalary(0);
+calculateBonus(1);
+calculateTotalSalary(1);
+showEmployees();
